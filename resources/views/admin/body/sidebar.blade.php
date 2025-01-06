@@ -186,6 +186,18 @@
                 
             </ul>
         </li>
+
+        <li>
+            <a href="javascript: void(0);" class="has-arrow">
+                <i data-feather="gift"></i>
+                <span data-key="t-ui-elements">role & permission </span>
+            </a>
+            <ul class="sub-menu" aria-expanded="false">
+                <li><a href="{{ route('all.permission') }}" extended-lightbox.html" data-key="t-lightbox">all permission</a></li>
+                <li><a href="{{ route('admin.approve.review') }}" data-key="t-range-slider">approved permission </a></li>
+                
+            </ul>
+        </li>
   
 
     </ul>

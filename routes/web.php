@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Client\RestaurantController;
 use App\Http\Controllers\Client\CouponController;
 use App\Http\Controllers\Admin\ManageController;
+use App\Http\Controllers\Admin\RoleController;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\CartController;
@@ -102,6 +104,8 @@ Route::middleware('admin')->group(function () {
         Route::get('/edit/category/{id}', 'EditCategory')->name('edit.category');
         Route::post('/update/category', 'UpdateCategory')->name('category.update');
         Route::get('/delete/category/{id}', 'DeleteCategory')->name('delete.category');
+
+
         Route::controller(ManageController::class)->group(function(){
         Route::get('/pending/restaurant', 'PendingRestaurant')->name('pending.restaurant'); 
         Route::get('/approve/restaurant', 'ApproveRestaurant')->name('approve.restaurant'); 
@@ -160,11 +164,24 @@ Route::middleware('admin')->group(function () {
 
     });
 
-    Route::controller(ReviewController::class)->group(function(){
+    Route::controller(RoleController::class)->group(function(){
         Route::get('/admin/pending/review', 'AdminPendingReview')->name('admin.pending.review');
         Route::get('/admin/approve/review', 'AdminApproveReview')->name('admin.approve.review');  
         Route::get('/reviewchangeStatus', 'ReviewChangeStatus'); 
         
+    });
+
+
+    Route::controller(RoleController::class)->group(function(){
+
+        Route::get('/all/permission', 'AllPermission')->name('all.permission');
+        Route::post('/store/permission', 'StorePermission')->name('permission.store');
+        Route::get('/add/permission', 'AddPermission')->name('add.permission');
+        Route::get('/edit/permission/{id}', 'EditPermission')->name('edit.permission');
+        Route::post('/update/permission', 'UpdatePermission')->name('permission.update');
+        Route::get('/delete/permission/{id}', 'DeletePermission')->name('delete.permission');
+
+
     });
     
 }); // End Admin Middleware 
